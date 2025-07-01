@@ -1,5 +1,7 @@
 name: Test Auto Rebase
 
+# The following line was suspect to be the culprit but it turned out
+# not to be.
 # run-name: Testing PR no.${{ github.event.pull_request.number }}
 
 on: 
