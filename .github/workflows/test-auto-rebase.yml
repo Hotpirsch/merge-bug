@@ -27,13 +27,15 @@ jobs:
           fetch-depth: 0
 
       - name: Rebase if necessary
+        env:
+          GITHUB_TOKEN: ${{ secrets.HPPUSHPAT }}
         run: |
           behind=$(git rev-list --count @..origin/master)
           echo "This PR is $behind commits behind master."
           if [[ $behind -gt 0 ]]; then
-            echo "Merging maaster..."
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git config user.name "github-actions[bot]"
+            echo "Merging master..."
+            git config user.email "HotPirsch@users.noreply.github.com"
+            git config user.name "Hotpirsch [PAT]"
             git fetch origin
             git merge origin/master -m "Merging master into ${{ github.event.pull_request.head.ref }}"
             git push
