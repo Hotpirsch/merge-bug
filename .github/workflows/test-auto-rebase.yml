@@ -1,6 +1,6 @@
 name: Test Auto Rebase
 
-run-name: Testing PR no.${{ github.event.pull_request.number }}
+# run-name: Testing PR no.${{ github.event.pull_request.number }}
 
 on: 
   pull_request:
