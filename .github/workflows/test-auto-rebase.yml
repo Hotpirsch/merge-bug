@@ -38,8 +38,8 @@ jobs:
           echo "This PR is $behind commits behind master."
           if [[ $behind -gt 0 ]]; then
             echo "Merging master..."
-            # git config user.email "HotPirsch@users.noreply.github.com"
-            # git config user.name "Hotpirsch"
+            git config user.email "Christph.Krueger@goto.com"
+            git config user.name "Christoph Krueger"
             git fetch origin
             git merge origin/master -m "Merging master into ${{ github.event.pull_request.head.ref }}"
             git push
