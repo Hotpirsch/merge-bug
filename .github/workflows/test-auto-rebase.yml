@@ -25,19 +25,21 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.HPPUSHPAT }}
+          # persist-credentials: false
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
       - name: Rebase if necessary
-        env:
-          GITHUB_TOKEN: ${{ secrets.HPPUSHPAT }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.HPPUSHPAT }}
         run: |
           behind=$(git rev-list --count @..origin/master)
           echo "This PR is $behind commits behind master."
           if [[ $behind -gt 0 ]]; then
             echo "Merging master..."
-            git config user.email "HotPirsch@users.noreply.github.com"
-            git config user.name "Hotpirsch [PAT]"
+            git config user.email "Christph.Krueger@goto.com"
+            git config user.name "Christoph Krueger"
             git fetch origin
             git merge origin/master -m "Merging master into ${{ github.event.pull_request.head.ref }}"
             git push
